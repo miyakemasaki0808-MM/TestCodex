@@ -1,0 +1,80 @@
+:root {
+  color: #172033;
+  background:
+    radial-gradient(circle at top left, #d9fff2 0, transparent 34rem),
+    #f4f7fb;
+  font-family:
+    "Yu Gothic UI", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.hero {
+  width: min(720px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 18vh 0 80px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: #087f5b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.lead {
+  max-width: 38rem;
+  margin: 28px 0;
+  color: #526079;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  line-height: 1.8;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  color: white;
+  background: #172033;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+button:hover {
+  background: #087f5b;
+  transform: translateY(-2px);
+}
+
+button:focus-visible {
+  outline: 3px solid #35d0a0;
+  outline-offset: 4px;
+}
+
+.message {
+  min-height: 1.5em;
+  color: #087f5b;
+  font-weight: 700;
+}
