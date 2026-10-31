@@ -1,5 +1,13 @@
 :root {
-  color: #172033;
+  --color-text: #172033;
+  --color-muted: #526079;
+  --color-accent: #087f5b;
+  --color-focus: #35d0a0;
+  --color-danger: #c92a2a;
+  --color-surface: #ffffff;
+  --color-border: #d5dce8;
+
+  color: var(--color-text);
   background:
     radial-gradient(circle at top left, #d9fff2 0, transparent 34rem), #f4f7fb;
   font-family:
@@ -18,15 +26,15 @@ body {
   margin: 0;
 }
 
-.hero {
-  width: min(720px, calc(100% - 40px));
+.app {
+  width: min(720px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 18vh 0 80px;
+  padding: 64px 0 80px;
 }
 
 .eyebrow {
-  margin: 0 0 16px;
-  color: #087f5b;
+  margin: 0 0 12px;
+  color: var(--color-accent);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -35,25 +43,76 @@ body {
 
 h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  letter-spacing: -0.06em;
-  line-height: 0.98;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
 }
 
 .lead {
-  max-width: 38rem;
-  margin: 28px 0;
-  color: #526079;
-  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin: 16px 0 32px;
+  color: var(--color-muted);
   line-height: 1.8;
+}
+
+.memo-form,
+.memo {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+
+.memo-form {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 40px;
+  padding: 24px;
+}
+
+label {
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: inherit;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+.form-actions,
+.memo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.form-actions {
+  margin-top: 8px;
 }
 
 button {
   border: 0;
   border-radius: 999px;
-  padding: 14px 22px;
+  padding: 10px 20px;
   color: white;
-  background: #172033;
+  background: var(--color-text);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -63,19 +122,91 @@ button {
 }
 
 button:hover {
-  background: #087f5b;
+  background: var(--color-accent);
   transform: translateY(-2px);
 }
 
 button:focus-visible {
-  outline: 3px solid #35d0a0;
+  outline: 3px solid var(--color-focus);
   outline-offset: 4px;
 }
 
-.message {
+.button-secondary,
+.button-edit {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: transparent;
+}
+
+.button-secondary:hover,
+.button-edit:hover {
+  color: white;
+}
+
+.button-delete {
+  background: var(--color-danger);
+}
+
+.button-delete:hover {
+  background: #a51d1d;
+}
+
+.memo-actions button {
+  padding: 6px 14px;
+  font-size: 0.9rem;
+}
+
+.status {
   min-height: 1.5em;
-  color: #087f5b;
+  margin: 0;
+  color: var(--color-accent);
   font-weight: 700;
+}
+
+.status[data-type="error"] {
+  color: var(--color-danger);
+}
+
+.memo-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.memo {
+  padding: 20px;
+}
+
+.memo-title {
+  margin: 0;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.memo-body {
+  margin: 8px 0 0;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.memo-date {
+  display: block;
+  margin: 12px 0;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.empty-message {
+  color: var(--color-muted);
+}
+
+#memo-count {
+  color: var(--color-muted);
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 @media (prefers-reduced-motion: reduce) {

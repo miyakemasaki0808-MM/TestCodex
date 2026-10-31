@@ -4,6 +4,19 @@ Vite で作った静的サイトを GitHub Pages に公開する学習用プロ�
 
 公開URL: https://miyakemasaki0808-mm.github.io/TestCodex/
 
+## アプリの概要
+
+ブラウザだけで動くメモアプリです。メモの追加・編集・削除ができ、データは `localStorage` に保存されます（サーバーには送りません）。
+
+| ファイル               | 役割                                                                  |
+| ---------------------- | --------------------------------------------------------------------- |
+| `src/memos/memo.js`    | 入力の検証と、メモ一覧の操作（DOM に触れない純粋な関数）              |
+| `src/memos/storage.js` | `localStorage` への保存と読み込み。読み込んだデータは信用せず検証する |
+| `src/memos/view.js`    | メモ一覧の描画。文字は必ず `textContent` で入れる                     |
+| `src/main.js`          | 画面のイベントと上の3つをつなぐ                                       |
+
+テストは同じフォルダの `*.test.js` です。
+
 ## 必要なもの
 
 - Node.js `^22.22.2 || ^24.15.0 || >=26.0.0`（推奨バージョンは `.nvmrc` の 24。CI もこれを使います）
@@ -61,6 +74,8 @@ PR と `main` への push のたびに `.github/workflows/ci.yml` が動きま�
 | Lint, format and build | `npm ci` → lint → 整形チェック → テスト → ビルド → `npm audit --audit-level=high` |
 | Dependency review      | PR で追加・更新される依存に、high 以上の脆弱性がないか確認                        |
 | Audit workflows        | [zizmor](https://docs.zizmor.sh/) で GitHub Actions の設定の危険な書き方を検査    |
+
+フロントエンドのコードでは、`innerHTML` / `outerHTML` / `insertAdjacentHTML` / `document.write` を ESLint で禁止しています（XSS 対策）。
 
 ワークフローを書くときの方針は次のとおりです。
 
