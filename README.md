@@ -34,11 +34,15 @@ npm のキャッシュ（`.npm-cache/`）とグローバルインストール先
 
 ## コマンド
 
-| コマンド | 内容 |
-| --- | --- |
-| `npm run dev` | 開発サーバーを起動（http://localhost:5173/TestCodex/） |
-| `npm run build` | `dist/` に本番用ファイルを出力 |
-| `npm run preview` | ビルド結果をローカルで確認 |
+| コマンド               | 内容                                                   |
+| ---------------------- | ------------------------------------------------------ |
+| `npm run dev`          | 開発サーバーを起動（http://localhost:5173/TestCodex/） |
+| `npm run build`        | `dist/` に本番用ファイルを出力                         |
+| `npm run preview`      | ビルド結果をローカルで確認                             |
+| `npm run lint`         | ESLint でコードを検査                                  |
+| `npm run format`       | Prettier でコードを整形                                |
+| `npm run format:check` | 整形されているかだけ確認（CI 用）                      |
+| `npm run check`        | lint・整形確認・ビルドをまとめて実行（push 前に）      |
 
 ## デプロイ
 

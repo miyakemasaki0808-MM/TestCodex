@@ -1,8 +1,7 @@
 :root {
   color: #172033;
   background:
-    radial-gradient(circle at top left, #d9fff2 0, transparent 34rem),
-    #f4f7fb;
+    radial-gradient(circle at top left, #d9fff2 0, transparent 34rem), #f4f7fb;
   font-family:
     "Yu Gothic UI", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
   font-synthesis: none;
