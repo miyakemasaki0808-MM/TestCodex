@@ -6,7 +6,7 @@ Vite で作った静的サイトを GitHub Pages に公開する学習用プロ�
 
 ## 必要なもの
 
-- Node.js `^20.19.0 || >=22.12.0`（推奨バージョンは `.nvmrc` の 24。CI もこれを使います）
+- Node.js `^22.22.2 || ^24.15.0 || >=26.0.0`（推奨バージョンは `.nvmrc` の 24。CI もこれを使います）
 
 `.npmrc` で `engine-strict=true` にしているため、対応外の Node では `npm install` が失敗します。
 
@@ -34,15 +34,17 @@ npm のキャッシュ（`.npm-cache/`）とグローバルインストール先
 
 ## コマンド
 
-| コマンド               | 内容                                                   |
-| ---------------------- | ------------------------------------------------------ |
-| `npm run dev`          | 開発サーバーを起動（http://localhost:5173/TestCodex/） |
-| `npm run build`        | `dist/` に本番用ファイルを出力                         |
-| `npm run preview`      | ビルド結果をローカルで確認                             |
-| `npm run lint`         | ESLint でコードを検査                                  |
-| `npm run format`       | Prettier でコードを整形                                |
-| `npm run format:check` | 整形されているかだけ確認（CI 用）                      |
-| `npm run check`        | lint・整形確認・ビルドをまとめて実行（push 前に）      |
+| コマンド               | 内容                                                      |
+| ---------------------- | --------------------------------------------------------- |
+| `npm run dev`          | 開発サーバーを起動（http://localhost:5173/TestCodex/）    |
+| `npm run build`        | `dist/` に本番用ファイルを出力                            |
+| `npm run preview`      | ビルド結果をローカルで確認                                |
+| `npm test`             | Vitest で単体テストを実行                                 |
+| `npm run test:watch`   | ファイルの変更を監視してテストを再実行                    |
+| `npm run lint`         | ESLint でコードを検査                                     |
+| `npm run format`       | Prettier でコードを整形                                   |
+| `npm run format:check` | 整形されているかだけ確認（CI 用）                         |
+| `npm run check`        | lint・整形確認・テスト・ビルドをまとめて実行（push 前に） |
 
 ## デプロイ
 
@@ -54,11 +56,11 @@ npm のキャッシュ（`.npm-cache/`）とグローバルインストール先
 
 PR と `main` への push のたびに `.github/workflows/ci.yml` が動きます。
 
-| ジョブ                 | 内容                                                                           |
-| ---------------------- | ------------------------------------------------------------------------------ |
-| Lint, format and build | `npm ci` → lint → 整形チェック → ビルド → `npm audit --audit-level=high`       |
-| Dependency review      | PR で追加・更新される依存に、high 以上の脆弱性がないか確認                     |
-| Audit workflows        | [zizmor](https://docs.zizmor.sh/) で GitHub Actions の設定の危険な書き方を検査 |
+| ジョブ                 | 内容                                                                              |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| Lint, format and build | `npm ci` → lint → 整形チェック → テスト → ビルド → `npm audit --audit-level=high` |
+| Dependency review      | PR で追加・更新される依存に、high 以上の脆弱性がないか確認                        |
+| Audit workflows        | [zizmor](https://docs.zizmor.sh/) で GitHub Actions の設定の危険な書き方を検査    |
 
 ワークフローを書くときの方針は次のとおりです。
 
