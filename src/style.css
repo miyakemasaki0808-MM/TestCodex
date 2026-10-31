@@ -78,3 +78,13 @@ button:focus-visible {
   color: #087f5b;
   font-weight: 700;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+
+  button:hover {
+    transform: none;
+  }
+}
